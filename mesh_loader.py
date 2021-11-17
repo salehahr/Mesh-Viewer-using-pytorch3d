@@ -14,7 +14,7 @@ from pytorch3d.renderer import (
     MeshRenderer, MeshRasterizer,
     BlendParams
 )
-from pytorch3d.renderer.mesh.shader import TexturedSoftPhongShader
+from pytorch3d.renderer.mesh.textures import TexturesVertex
 import numpy as np
 
 
@@ -91,7 +91,7 @@ class MeshLoader(object):
         self.face_mesh = Meshes(
             verts = [verts.to(self.device)],
             faces = [verts_idx.to(self.device)],
-            textures= Textures(verts_rgb=verts_rgb)
+            textures=TexturesVertex(verts_features=verts_rgb)
         )
 
     def set_camera_location(self, distance, elevation, azimuth):
