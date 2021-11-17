@@ -4,7 +4,7 @@ import os, torch
 from pytorch3d.io import load_obj, load_ply
 
 # Data structures and functions for rendering
-from pytorch3d.structures import Meshes, Textures
+from pytorch3d.structures import Meshes
 from pytorch3d.ops import GraphConv, sample_points_from_meshes, vert_align
 from pytorch3d.renderer import (
     look_at_view_transform,
@@ -95,7 +95,7 @@ class MeshLoader(object):
         # Render the face providing the values of R and T
         image_ref = self.phong_renderer(meshes_world=self.face_mesh, R=R, T=T)
 
-        #silhouette = silhouette.cpu().numpy()
+        # silhouette = silhouette.cpu().numpy()
         image_ref = image_ref.cpu().numpy()
 
         return image_ref.squeeze()
