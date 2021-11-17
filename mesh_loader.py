@@ -48,7 +48,9 @@ class MeshLoader(object):
                 cameras=self.cameras,
                 raster_settings=self.raster_settings
             ),
-            shader=HardPhongShader(device=self.device, lights=lights)
+            shader=HardPhongShader(device=self.device,
+                                   cameras=self.cameras,
+                                   lights=lights)
         )
 
     def initialize_renderer(self):
