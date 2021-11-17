@@ -8,7 +8,7 @@ from pytorch3d.structures import Meshes
 from pytorch3d.ops import GraphConv, sample_points_from_meshes, vert_align
 from pytorch3d.renderer import (
     look_at_view_transform,
-    OpenGLPerspectiveCameras,
+    FoVPerspectiveCameras,
     PointLights, HardPhongShader,
     RasterizationSettings,
     MeshRenderer, MeshRasterizer,
@@ -53,7 +53,7 @@ class MeshLoader(object):
 
     def initialize_renderer(self):
         # Initialize an OpenGL perspective camera
-        self.cameras = OpenGLPerspectiveCameras(device=self.device)
+        self.cameras = FoVPerspectiveCameras(device=self.device)
 
         self.raster_settings = RasterizationSettings(
             image_size = 512,
