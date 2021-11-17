@@ -22,6 +22,19 @@ class MeshLoader(object):
     def __init__(self, device='cuda:0'):
         self.device = torch.device(device)
         torch.cuda.set_device(self.device)
+
+        self.cameras = None
+        self.raster_settings = None
+
+        self.light_location = None
+        self.phong_renderer = None
+
+        self.distance = None
+        self.elevation = None
+        self.azimuth = None
+
+        self.face_mesh = None
+
         self.initialize_renderer()
 
     def set_phong_renderer(self, light_location):
